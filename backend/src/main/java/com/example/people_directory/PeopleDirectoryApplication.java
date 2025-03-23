@@ -6,8 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @SpringBootApplication
-@PropertySource("classpath:secrets.properties")
-@CrossOrigin(origins = "http://localhost:3000")
+@PropertySource(value = "classpath:secret.properties", ignoreResourceNotFound = true)
 public class PeopleDirectoryApplication {
 
     public static void main(String[] args) {

@@ -5,7 +5,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-secrets.properties
+src/main/resources/secrets.properties
 .env
 ### STS ###
 .apt_generated
