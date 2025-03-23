@@ -23,9 +23,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          
-      - name: Grant execute permission to gradlew
-        run: chmod +x ./gradlew
 
       - name: Build backend
         working-directory: ./backend
