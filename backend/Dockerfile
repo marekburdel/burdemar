@@ -14,7 +14,7 @@ COPY gradlew .
 COPY src ./src
 
 # Build the application using Gradle
-RUN ./gradlew build --no-daemon
+RUN ./gradlew build --no-daemon --parallel
 
 # Now, create a new image for running the Spring Boot app
 FROM openjdk:17-jdk-slim
