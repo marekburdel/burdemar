@@ -9,7 +9,7 @@ interface PaginationComponentProps {
 
 const PaginationComponent: React.FC<PaginationComponentProps> = ({ count, page, onPageChange }) => {
     return (
-        <Pagination count={count} page={page} onChange={onPageChange} color="primary" />
+        <Pagination count={count} page={page} onChange={onPageChange} color="primary" data-testid="pagination-test-id" />
     );
 };
 
