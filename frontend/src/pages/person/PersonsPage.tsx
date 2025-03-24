@@ -20,18 +20,24 @@ const PersonsPage = () => {
     const [age, setAge] = useState('');
     const [ageRange, setAgeRange] = useState<number[]>([18, 60]);
 
-    useEffect(() => {
-        fetchPersons(page);
-    }, [page, sortField, sortDirection, firstName, lastName, age, ageRange, sortField, sortDirection]);
-
-    const fetchPersons = (currentPage: number) => {
-        getPersons(page, pageSize, { firstName, lastName, age, ageMin: ageRange[0], ageMax: ageRange[1] })
+    const fetchPersons = React.useCallback((currentPage: number) => {
+        getPersons(currentPage, pageSize, {
+            firstName,
+            lastName,
+            age,
+            ageMin: ageRange[0],
+            ageMax: ageRange[1],
+        })
             .then((data) => {
                 setPersons(data.content);
                 setTotalPages(data.totalPages);
             })
             .catch((error) => console.error('Error fetching persons:', error));
-    };
+    }, [firstName, lastName, age, ageRange, pageSize]);
+
+    useEffect(() => {
+        fetchPersons(page);
+    }, [page, sortField, sortDirection, firstName, lastName, age, ageRange, sortField, sortDirection, fetchPersons]);
 
     const handleDelete = (id: number) => {
         deletePerson(id)
